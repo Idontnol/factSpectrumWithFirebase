@@ -45,7 +45,7 @@ function App() {
   const [isLoading,setIsLoading]=useState(false);
   const [currentCategory,setCurrentCategory]=useState("all");
 
-  let factRef=collection(db,"facts");
+  // let factRef=collection(db,"facts");
 
   // useEffect(function() {
   //   async function getFacts(){
@@ -71,14 +71,14 @@ function App() {
 
       const getFacts=async()=>{
         setIsLoading(true);
+        let factRefee= collection(db,"facts");
         try{
-
         let fetchedFacts;
         if(currentCategory==="all")
-          fetchedFacts = await getDocs(factRef);
+          fetchedFacts = await getDocs(factRefee);
         else{
           console.log(currentCategory);
-          let factQuery= query(factRef,where('category','==',currentCategory));
+          let factQuery= query(factRefee,where('category','==',currentCategory));
           fetchedFacts= await getDocs(factQuery);
         } 
        
