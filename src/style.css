@@ -1,0 +1,285 @@
+*{
+    margin:0;
+    padding:0;
+}
+.header{
+    margin-bottom:40px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+}   
+.main{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:48px;
+    height:60vh;
+}
+.section{
+    overflow:auto;
+}
+.section::-webkit-scrollbar-track {
+    background: #292524;
+    border-radius: 5px;
+  }
+.section::-webkit-scrollbar-thumb{
+    background: #44403c;
+  border-radius: 5px;
+}
+.container{                 
+    max-width:90vw;
+    margin-left:auto;
+    margin-right:auto;/*this container code makes the application more dynamic very very important*/
+}
+#root{
+    max-width:90vw;
+    margin-left:auto;
+    margin-right:auto;
+}
+.message{
+    text-align: center;
+    text-transform:uppercase;
+    font-size:32px;
+    font-weight:600;
+    margin-top:24p;
+}
+
+.logo{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:16px; /* used to set the space between flex items*/
+}
+.logo img{  /*descendant selector selecting child element without class of child*/ 
+    height:68px;
+    width:68px;
+}
+
+body{
+    background-color:#292524;
+    font-family:"sono",sans-serif;/* if first font family cant able to  load by the browser the second will applied */
+    color:#fafaf9;
+    padding:48px;
+}
+h1{
+    font-size:42px;
+    text-transform:uppercase;
+    text-align:center;
+    margin-top:4px;
+    font-family:"coiny",sans-serif;
+}
+.fact-form{
+    background-color:#44403c;
+    padding: 16px 20px;
+    margin-bottom:40px;
+    text-align: center;
+    color:white;
+    display:flex;
+    border-radius:16px;
+}
+
+.fact-form input,.fact-form select{
+    background-color:#78716c;
+    border:none;
+    border-radius:100px;
+    padding:16px;
+    font-size:16px;
+    color:inherit;
+}
+.post-btn{
+    margin-left:auto;
+}
+.fact-form input::placeholder{/*this is because background color overriode  color*/
+    color:#a8a29e;
+}
+.fact-form span{
+    font-weight:600;
+    font-size:18px;
+    margin-right:20px;
+}
+.hidden{
+    display:none;
+}
+.para{
+    overflow:visible;
+}
+.fact{
+    font-size:20px;
+    line-height:1.4;/*space between lines in fact*/
+    letter-spacing: 1px;/*space between the letters */
+    color:#fafaf9;
+    margin-bottom:16px;
+    padding:16px 24px; /* padding horizontal(left,right) vertical(top,bottom) */
+    background-color:#44403c;
+    display:flex;
+    border-radius:16px;
+    align-items:center;
+    
+}
+.tag-div{
+    margin-right:8px;
+}
+.vote-buttons{
+    margin-left:auto;
+    display:flex;
+    flex-shrink:0;
+    gap:5px;
+
+}
+
+.category {
+    margin-bottom: 16px;
+  }
+.tag{
+    font-size:14px;
+    text-transform:uppercase;
+    color:#fafaf9;
+    padding-top:3px;
+    border-radius:100px;
+    padding-left:8px;
+    padding-right:8px;
+    font-family:"coiny",sans-serif;
+}
+.source:link{
+    color:#a8a29e;
+    text-decoration:none;
+    transition: 0.3s;
+    margin-left:12px;
+}
+
+.source:visited{
+    color:green;
+}
+.source:hover,.source:active{
+    color:blue;
+}
+ul{
+    list-style:none;
+}
+.btn{
+    font-family:"coiny", sans-serif;
+    border:none;
+    line-height:1;
+    font-size:17px;
+    padding:16px 10px 13px;
+    text-transform:uppercase;
+    background-image:linear-gradient(135deg,#3b82f6,#ef4444,#16a34a,#eab308);
+    color:inherit;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+    
+}
+.btn:hover{
+    transform:scale(110%) rotate(-2deg);
+}
+.btn-all-categories{
+    margin-bottom:17px;
+    width:100%;
+}
+.btn-category{
+    width:100%;
+    background-image:none;
+    margin-bottom:14px;
+}
+.vote-buttons button{
+    color:inherit;
+    padding:6px;
+    background-color:#78716c;
+    border:none;
+    font-size:18px;
+    font-family:inherit;
+    border-radius:100px;
+    display:flex;
+    transition:0.3s;
+}
+.vote-buttons button:hover{
+    background-color:#292524;
+}
+
+@media(max-width:1200px){
+.fact{
+    flex-direction:column;
+    gap:12px;
+    align-items:flex-end;
+}
+}
+@media (max-width:1000px){
+    .body{
+        padding:28px;
+    }
+    .fact-form{
+        flex-direction:column;
+        align-items:row;
+        width:auto;
+    }
+    .main{
+        grid-template-columns:1fr;
+        
+    }
+}
+@media (max-width: 900px) {
+    .main {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+    
+  }
+.disputed{
+ color:red;
+ font-weight:600;
+ margin-right:10px;   
+}
+  @media (max-width: 600px) {
+    #root {
+      padding: 24px;
+    }
+   
+    .header {
+      flex-direction: column;
+      gap: 16px;
+    }
+   
+    .fact-form {
+      padding: 16px;
+    }
+   
+    .fact {
+      padding: 12px 16px;
+    }
+  }
+
+/*
+{}  -javascript mode in return of the components 
+websites----
+CSS TAILWIND COLORS for color picking
+MDN WEB DOCS for understanding concepts
+GOOGLE FONTS for font import
+
+display:none !impotrant increase the precidence to the top
+color:inherit; used to inherit parents color we are forcing it
+*{} global selector
+px-pixels,rem
+display:grid;
+grid-template-columns:350px 200px 1fr; creates three colmuns
+grid-template-columns:350px 1fr; creates two columns first column with width 350px and next column occupies entire width
+grid-template-columns:1fr 1fr 1fr; creates three columns with equal width
+grid-template-rows:200px 200px; creates two columns
+margin-left:auto; occupies whole right side empty space
+pseudo elements
+button:hover;
+button:visited;
+button:active; all these applied onky if it get active (doubleclick)
+source:link{--------} all the inner properties applied onlyif it is a link
+pointer:cursor;
+
+
+function expression return something 
+if(){}else{} this is statement it cant return it execute statements you cant assign it to anything
+?: this is expression you can assign it to anything
+*/
+
+
+
+
