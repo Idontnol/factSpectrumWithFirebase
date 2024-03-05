@@ -1,6 +1,6 @@
 import {useEffect,useState} from "react";
-import {getDocs,collection,query,where, orderBy, addDoc, doc, updateDoc, getDoc} from 'firebase/firestore';
-import supabase from './supabase';
+import {getDocs,collection,query,where, addDoc, doc,  getDoc} from 'firebase/firestore';
+// import supabase from './supabase';
 import "./style.css";
 import { db } from "./config/firebase";
 
