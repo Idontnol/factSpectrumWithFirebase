@@ -1,6 +1,7 @@
 import {useEffect,useState} from "react";
-import {getDocs,collection,query,where, addDoc, doc,  getDoc} from 'firebase/firestore';
+import {getDocs,collection,query,where, addDoc, doc,  getDoc,updateDoc} from 'firebase/firestore';
 // import supabase from './supabase';
+import { increment } from "firebase/firestore";
 import "./style.css";
 import { db } from "./config/firebase";
 
@@ -267,22 +268,33 @@ function Fact({fact,setFacts}){
   const [isUpdating, setIsUpdating] = useState(false);
   const isDisputed =
     fact.votesInteresting + fact.votesMindBlowing < fact.votesFalse;
-  const handleVote=async(columnName)=>{
-    setIsUpdating(true);
-    try{
-      console.log("factId",fact.id);
-    const factDoc= doc(db,"facts",{id:fact.id});
-    console.log(factDoc);
-    const getColumnValue= await getDoc(factDoc);
-    console.log(getColumnValue.docs);
-    // await updateDoc(factDoc,{columnName:getColumnValue+1});
-    // console.log("updated");
-    }
-    catch(e){
-      alert(e.message);
-    }
-    setIsUpdating(false);
+const handleVote = async (columnName) => {
+  setIsUpdating(true);
+
+  // Optimistically update UI for all vote types
+  setFacts((prevFacts) =>
+    prevFacts.map((f) =>
+      f.id === fact.id ? { ...f, [columnName]: (f[columnName] || 0) + 1 } : f
+    )
+  );
+
+  try {
+    const factDoc = doc(db, "facts", fact.id);
+    await updateDoc(factDoc, {
+      [columnName]: increment(1), // Firestore built-in increment
+    });
+  } catch (e) {
+    alert("Failed to update vote: " + e.message);
+    // Rollback in case of error
+    setFacts((prevFacts) =>
+      prevFacts.map((f) =>
+        f.id === fact.id ? { ...f, [columnName]: (f[columnName] || 1) - 1 } : f
+      )
+    );
   }
+
+  setIsUpdating(false);
+};
 
   return (
     
@@ -296,7 +308,7 @@ function Fact({fact,setFacts}){
           <div className="vote-buttons"> 
               <button onClick={() => handleVote('votesInteresting')}
           disabled={isUpdating}>👍{fact.votesInteresting}</button>
-              <button onClick={() => handleVote('votesMindBlowing')}
+              <button onClick={() => handleVote('votesMindblowing')}
           disabled={isUpdating}>🤯{fact.votesMindblowing}</button>
               <button onClick={() => handleVote('votesFalse')} disabled={isUpdating}>⛔️{fact.votesFalse}</button>
           </div>   
