@@ -151,7 +151,20 @@ function NewFactForm({setFacts,setShowForm}){
  const handleSubmit=async (e)=>{
 
   e.preventDefault();
-  if(text && isValidHttpUrl(source) && category && textLength<200){
+          if(!text || textLength>200){
+           alert("text length should be less than 200 characters);
+         }
+              else if(! category){
+          alert("choose a category");
+       }
+    else if(! isValidHttpUrl(source)){
+       alert("source should be starts with https://");
+     }
+     
+         else if(!text || textLength>200){
+           alert("text length should be less than 200 characters);
+         }
+  else if(text && isValidHttpUrl(source) && category && textLength<200){
 //3,create a fact 
 /*const newFact=
 {
@@ -199,7 +212,7 @@ setIsUploading(false);
       disabled={isUploading}
   />
   <span>{200-textLength}</span>
-  <input type="text" placeholder="Trust worthy source"
+  <input type="text" placeholder="source https://google.com/"
     value={source}
     onChange={(e)=>{setSource(e.target.value)}}
     disabled={isUploading}
