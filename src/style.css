@@ -87,6 +87,8 @@ h1{
     padding:16px;
     font-size:16px;
     color:inherit;
+    padding-right:10px;
+    margin-left:10px;
 }
 .post-btn{
     margin-left:auto;
@@ -98,6 +100,7 @@ h1{
     font-weight:600;
     font-size:18px;
     margin-right:20px;
+    margin-left:20px;
 }
 .hidden{
     display:none;
@@ -250,7 +253,9 @@ ul{
       padding: 12px 16px;
     }
   }
-
+.text-space{
+    margin-left:'20px';
+}
 /*
 {}  -javascript mode in return of the components 
 websites----
