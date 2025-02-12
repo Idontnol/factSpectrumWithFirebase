@@ -144,7 +144,7 @@ function isValidHttpUrl(string) {
 
 function NewFactForm({setFacts,setShowForm}){
   const [text,setText]=useState("");
-  const [source,setSource]=useState("");
+  const [source,setSource]=useState("https://google.com");
   const [category,setCategory]=useState("");
   const [isUploading,setIsUploading]=useState(false);
   const textLength=text.length;
@@ -163,9 +163,13 @@ function NewFactForm({setFacts,setShowForm}){
     } else if (!category) {
       alert("Choose a category");
       return;
-    } else if (!isValidHttpUrl(source)) {
+    } else if (source) {
+     
+    if (!isValidHttpUrl(source)){
       alert("Source should start with https://");
       return;
+     }
+    
     }
      
 
