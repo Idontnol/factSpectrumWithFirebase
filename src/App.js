@@ -152,8 +152,13 @@ function NewFactForm({setFacts,setShowForm}){
  const handleSubmit=async (e)=>{
 
   e.preventDefault();
-  if (!text || textLength > 200) {
-      alert("Text length should be less than 200 characters");
+   if(!text){
+     alert("Type a fact to post it ");
+      return;
+     
+   }
+  if ( textLength > 200) {
+      alert("Fact(text) length should be less than 200 characters");
       return;
     } else if (!category) {
       alert("Choose a category");
