@@ -151,19 +151,18 @@ function NewFactForm({setFacts,setShowForm}){
  const handleSubmit=async (e)=>{
 
   e.preventDefault();
-          if(!text || textLength>200){
-           alert("text length should be less than 200 characters);
-         }
-              else if(! category){
-          alert("choose a category");
-       }
-    else if(! isValidHttpUrl(source)){
-       alert("source should be starts with https://");
-     }
+  if (!text || textLength > 200) {
+      alert("Text length should be less than 200 characters");
+      return;
+    } else if (!category) {
+      alert("Choose a category");
+      return;
+    } else if (!isValidHttpUrl(source)) {
+      alert("Source should start with https://");
+      return;
+    }
      
-         else if(!text || textLength>200){
-           alert("text length should be less than 200 characters);
-         }
+
   else if(text && isValidHttpUrl(source) && category && textLength<200){
 //3,create a fact 
 /*const newFact=
