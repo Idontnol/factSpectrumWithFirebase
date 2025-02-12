@@ -1,5 +1,5 @@
 import {useEffect,useState} from "react";
-import {getDocs,collection,query,where, addDoc, doc,  getDoc,updateDoc} from 'firebase/firestore';
+import {getDocs,collection,query,where, addDoc, doc,updateDoc} from 'firebase/firestore';
 // import supabase from './supabase';
 import { increment } from "firebase/firestore";
 import "./style.css";
